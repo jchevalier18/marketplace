@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../product.service";
 import { Product } from "../products";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-product-list",
@@ -8,11 +9,18 @@ import { Product } from "../products";
   styleUrls: ["./product-list.component.css"]
 })
 export class ProductListComponent {
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, protected http: HttpClient) {
     this.products = this.productService.getAll();
   }
   products: Product[] = [];
+  clima: any;
+  ngOnInit():void {
 
+    this.http.get<any>("weatherforecast").subscribe(data => {
+      this.clima = data;
+    });
+
+  }
   share() {
     window.alert("The product has been shared!");
   }

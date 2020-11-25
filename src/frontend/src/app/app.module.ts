@@ -19,11 +19,11 @@ import { ProductService } from './product.service';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: "", component: ProductListComponent },
-      { path: "products/:productId", component: ProductDetailsComponent },
-      { path: "cart", component: CartComponent },
-      { path: 'shipping', component: ShippingComponent },
-    ])
+    { path: "", component: ProductListComponent },
+    { path: "products/:productId", component: ProductDetailsComponent },
+    { path: "cart", component: CartComponent },
+    { path: 'shipping', component: ShippingComponent },
+], { relativeLinkResolution: 'legacy' })
   ],
   declarations: [
     AppComponent,
